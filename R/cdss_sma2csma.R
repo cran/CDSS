@@ -1,14 +1,18 @@
 #' Complete a skill multi-assignment
 #'
 #' \code{cdss_sma2csma} expects a skill multi-assignment object and returns
-#' its closure under completeness.
+#' the corresponding complete skill multi-assignment. 
+#' If this would involve cycles, the function stops by default - except if 
+#' \code{allowcycles} is set to \code{TRUE}. In that case, the result may
+#' be ill-defined!
 #'
 #' @param sma Skill multi-assignment to be completed
+#' @param allowcycles Whether prerequisite cycles should be allowed (default = FALSE)
 #'
 #' @return Object of class \code{cdss_csma}.
 #'
 #' @export
-cdss_sma2csma <- function(sma) {
+cdss_sma2csma <- function(sma, allowcycles = FALSE) {
   if (!(inherits(sma, "cdss_sma"))) {
     stop(sprintf("%s must be of class %s.",
                  dQuote("sma"),
@@ -21,18 +25,23 @@ cdss_sma2csma <- function(sma) {
   
   # We do only/max. one addition per outer loop
   chgd <- TRUE
+  foundcycles <- FALSE
   clo <- NULL  # chgd LO
-  while (chgd) {
+  while (chgd && (!foundcycles)) {
     # loop for a transitive extension
     chgd <- FALSE
     clauses <- dim(sma)[1]
     # for each row in the data frame
     lapply((1:clauses), function(cl) {
-      if (!chgd) {
-        cl_h <- 1 * (as.numeric(sma[cl,2:(skills+1)]) | as.numeric(sma[cl,(skills+2):((2*skills)+1)]))
+      if ((!chgd) && (!foundcycles)) {
+        if (allowcycles) {
+          cl_h <- 1 * (as.numeric(sma[cl,2:(skills+1)]) | as.numeric(sma[cl,(skills+2):((2*skills)+1)]))
+        } else {
+          cl_h <- as.numeric(sma[cl,(skills+2):((2*skills)+1)])
+        }
         # for each required skill
         lapply(which(sma[cl,reqcols]==1), function(s) {
-          if (!chgd) {
+          if ((!chgd) && (!foundcycles)) {
             # possible extensions, i.e. rows for LOs teaching skill s
             poss_rows <- which(sma[,s+1] == 1)
             poss <- 1 * (sma[poss_rows,2:(skills+1)] | sma[poss_rows,(skills+2):((2*skills)+1)])
@@ -45,17 +54,25 @@ cdss_sma2csma <- function(sma) {
               clo <<- unlist(sma[cl,1])
               sma <<- sma[-cl,]
               apply(poss, 1, function(p) {
-                v <- c(clo, tgt, 1*(req|p))
-                names(v) <- colnames(sma)
-                sma <<- data.frame(rbind(sma, t(v)))
-                sma[,2:(2*skills+1)] <<- sapply(sma[,2:(2*skills+1)], as.numeric)
-                rownames(sma) <<- 1:dim(sma)[1]
+                if ((allowcycles) || (all((tgt & p) == 0))) {
+                  v <- c(clo, tgt, 1*(req|p))
+                  names(v) <- colnames(sma)
+                  sma <<- data.frame(rbind(sma, t(v)))
+                  sma[,2:(2*skills+1)] <<- sapply(sma[,2:(2*skills+1)], as.numeric)
+                  rownames(sma) <<- 1:dim(sma)[1]
+                } else
+                  foundcycles <<- TRUE
               })
+              if ((!allowcycles) && foundcycles) {
+                stop(sprintf("Cycle(s) around LO %s! Result is undefined", clo))
+              }
             }
           }
         })
       }
     })
+    if ((!allowcycles) && foundcycles)
+      return()
     # Remove comparable rows
     colnames(sma) <- cn
     rownames(sma) <- 1:(dim(sma)[1])

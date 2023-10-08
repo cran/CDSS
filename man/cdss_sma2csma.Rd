@@ -4,15 +4,20 @@
 \alias{cdss_sma2csma}
 \title{Complete a skill multi-assignment}
 \usage{
-cdss_sma2csma(sma)
+cdss_sma2csma(sma, allowcycles = FALSE)
 }
 \arguments{
 \item{sma}{Skill multi-assignment to be completed}
+
+\item{allowcycles}{Whether prerequisite cycles should be allowed (default = FALSE)}
 }
 \value{
 Object of class \code{cdss_csma}.
 }
 \description{
 \code{cdss_sma2csma} expects a skill multi-assignment object and returns
-its closure under completeness.
+the corresponding complete skill multi-assignment. 
+If this would involve cycles, the function stops by default - except if 
+\code{allowcycles} is set to \code{TRUE}. In that case, the result may
+be ill-defined!
 }

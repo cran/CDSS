@@ -30,16 +30,15 @@ read_skill_assignment_ods <- function(
     verbose = TRUE
 )
 {
-  t <- read_ods(path=filename, sheet=taughtname)
-  r <- read_ods(path=filename, sheet=requiredname)
+  t <- as.data.frame(read_ods(path=filename, sheet=taughtname))
+  r <- as.data.frame(read_ods(path=filename, sheet=requiredname))
   sa <- cdss_tables2sa(t, r)
   check <- cdss_sa_compliance(sa, verbose)
   if (!check) {
     if (warnonly) {
-      stop("The assignment tables are not skill assignment compliant!")
-    } else {
       warning("The assignment tables are not skill assignment compliant!")
-      
+    } else {
+      stop("The assignment tables are not skill assignment compliant!")
     }
   }
   sa

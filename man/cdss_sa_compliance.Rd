@@ -21,6 +21,7 @@ it is compliant to the conditions for CDCS.
 \seealso{
 Other Functions testing validity of skill assignments: 
 \code{\link{cdss_circular_requirements}()},
-\code{\link{cdss_missing_los}()}
+\code{\link{cdss_missing_los}()},
+\code{\link{cdss_nonteaching_los}()}
 }
 \concept{Functions testing validity of skill assignments}

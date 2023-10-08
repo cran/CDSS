@@ -43,6 +43,12 @@ cdss_sa_compliance <- function(sa, warnings = FALSE) {
     if (warnings) warning("Some skills are taught and required for the same learning object: ", is)
     result <- FALSE
   }
+  
+  if (any(rowSums(taught) == 0)) {
+    if (warnings) warning("Not all learning objects teach something: ",
+                          names(which(rowSums(taught) == 0)))
+    result <- FALSE
+  }
 
   result
 }

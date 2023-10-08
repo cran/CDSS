@@ -1,0 +1,9 @@
+2023-10-08: Version 0.2-0 (Cord Hockemeyer, cord.hockemeyer@uni-graz.at)
+* Adding functions for the special case of one LO per skill
+* Improvements and bug fixes of existing functions
+* Deleting unused functions and moving others to the kstMatrix package
+* Adapting read_skill_assignment_ods() to new readODS package version (>= 2.0.0)
+* Adapting CDSS-package.R to new documentation rules
+
+2023-01-23: Version 0.1-0 (Cord Hockemeyer, cord.hockemeyer@uni-graz.at)
+* Package created

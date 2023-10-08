@@ -19,6 +19,7 @@ of skills which are not taught by any learning object.
 \seealso{
 Other Functions testing validity of skill assignments: 
 \code{\link{cdss_circular_requirements}()},
+\code{\link{cdss_nonteaching_los}()},
 \code{\link{cdss_sa_compliance}()}
 }
 \concept{Functions testing validity of skill assignments}
