@@ -21,6 +21,7 @@ only one teaching LO per skill) and FALSE.
 }
 \seealso{
 Other functions deriving skill structures from skill assignments: 
+\code{\link{cdss_lo_sa2ar}()},
 \code{\link{cdss_sa2ar_skill}()}
 }
 \concept{functions deriving skill structures from skill assignments}

@@ -27,7 +27,7 @@ learning objects, respectively.
 \item Read the skill assignment using one of the \code{read_skill_assignments_xxx()} functions.
 \item Check whether the skill assignment allows for the derivation of a surmise relation using \code{\link[=cdss_sa_describes_sr]{cdss_sa_describes_sr()}}.
 \item If yes, derive an attribution relation from the skill assignment using \code{\link[=cdss_sa2ar_skill]{cdss_sa2ar_skill()}}.
-\item Close the attribution relation to a surmise relation using \code{\link[=close_ar]{close_ar()}}.
+\item Close the attribution relation to a surmise relation using \code{\link[=cdss_close_ar]{cdss_close_ar()}}.
 \item Continue with functions from the \code{kstMatrix} package, e.g., to obtain a basis and further on a skill space.
 }
 }
@@ -64,7 +64,7 @@ of the European Commission through the QHELP project (\url{https://qhelp.eu/}).
 \examples{
 library(readODS)
 fpath <- system.file("extdata", "SkillAssignment.ods", package="CDSS")
-sa <- read_skill_assignment_ods(fpath)
+sa <- cdss_read_skill_assignment_ods(fpath)
 sa
 sma <- cdss_sa2sma(sa)
 sma

@@ -25,6 +25,8 @@ is taught or required, respectively, by the learning object and a "0" otherwise.
 }
 \seealso{
 Other functions building skill (multi) assignment matrices: 
+\code{\link{cdss_lo_csma2sf}()},
+\code{\link{cdss_lo_sa2af}()},
 \code{\link{cdss_sa2sma}()}
 }
 \concept{functions building skill (multi) assignment matrices}

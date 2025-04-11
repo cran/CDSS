@@ -18,6 +18,8 @@ assignment. It returns a skill multi-assignment object.
 }
 \seealso{
 Other functions building skill (multi) assignment matrices: 
+\code{\link{cdss_lo_csma2sf}()},
+\code{\link{cdss_lo_sa2af}()},
 \code{\link{cdss_tables2sa}()}
 }
 \concept{functions building skill (multi) assignment matrices}

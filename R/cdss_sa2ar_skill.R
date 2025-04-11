@@ -1,4 +1,4 @@
-#' Create aan attribution relation on skills from a skill assignment.
+#' Create an attribution relation on skills from a skill assignment.
 #'
 #' \code{cdss_sa2ar_skill} expects a skill assignment and derives an attribution relation
 #'  on skills if the skill assignment fulfills the necessary conditions, i.e. if there 

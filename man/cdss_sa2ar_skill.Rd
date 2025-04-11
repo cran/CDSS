@@ -2,7 +2,7 @@
 % Please edit documentation in R/cdss_sa2ar_skill.R
 \name{cdss_sa2ar_skill}
 \alias{cdss_sa2ar_skill}
-\title{Create aan attribution relation on skills from a skill assignment.}
+\title{Create an attribution relation on skills from a skill assignment.}
 \usage{
 cdss_sa2ar_skill(sa)
 }
@@ -19,6 +19,7 @@ attribution relation or NULL
 }
 \seealso{
 Other functions deriving skill structures from skill assignments: 
+\code{\link{cdss_lo_sa2ar}()},
 \code{\link{cdss_sa_describes_sr}()}
 }
 \concept{functions deriving skill structures from skill assignments}

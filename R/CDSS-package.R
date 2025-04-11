@@ -16,7 +16,7 @@
 #' 1. Read the skill assignment using one of the \code{read_skill_assignments_xxx()} functions.
 #' 1. Check whether the skill assignment allows for the derivation of a surmise relation using [cdss_sa_describes_sr()].
 #' 1. If yes, derive an attribution relation from the skill assignment using [cdss_sa2ar_skill()].
-#' 1. Close the attribution relation to a surmise relation using [close_ar()].
+#' 1. Close the attribution relation to a surmise relation using [cdss_close_ar()].
 #' 1. Continue with functions from the \code{kstMatrix} package, e.g., to obtain a basis and further on a skill space.
 #' 
 #' @section Data files:
@@ -37,7 +37,7 @@
 #' @examples
 #' library(readODS)
 #' fpath <- system.file("extdata", "SkillAssignment.ods", package="CDSS")
-#' sa <- read_skill_assignment_ods(fpath)
+#' sa <- cdss_read_skill_assignment_ods(fpath)
 #' sa
 #' sma <- cdss_sa2sma(sa)
 #' sma

@@ -1,8 +1,8 @@
 Package: CDSS
 Type: Package
 Title: Course-Dependent Skill Structures
-Version: 0.2-0
-Date: 2023-10-08
+Version: 0.3-0
+Date: 2025-04-07
 Depends: R (>= 4.3.0)
 Imports: readODS (>= 2.0.0), openxlsx (>= 4.2.0)
 Authors@R: c(person(given = "Cord", family = "Hockemeyer",
@@ -14,8 +14,8 @@ NeedsCompilation: no
 Description: Deriving skill structures from skill assignment 
     data for courses (sets of learning objects).
 Encoding: UTF-8
-RoxygenNote: 7.2.3
-Packaged: 2023-10-08 07:43:10 UTC; cord
+RoxygenNote: 7.3.2
+Packaged: 2025-04-10 13:15:36 UTC; cord
 Author: Cord Hockemeyer [aut, cre]
 Repository: CRAN
-Date/Publication: 2023-10-08 19:10:07 UTC
+Date/Publication: 2025-04-11 11:20:13 UTC
